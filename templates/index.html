@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='img/panda.png') }}" rel="icon" type="image/png">
+  <title>판다톡 - 로그인</title>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login">
+      <h1 class="login__logo"></h1>
+      <h3 class="login__title">
+        판다톡
+      </h3>
+      <form class="login__form" action="./chats.html">        
+        <input class="login__form__id" placeholder="판다계정 (이메일 또는 전화번호)" type="text">
+        <input class="login__form__pw" placeholder="비밀번호" type="password">
+        <input class="login__form__bt" type="submit" value="로그인">
+      </form>
+      <p class="login__account">
+        판다 계정 찾기&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;비밀번호 재설정
+      </p>
+    </div>
+  </div>
+</body>
+</html>

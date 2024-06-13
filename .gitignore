@@ -1,0 +1,8 @@
+# Created by https://www.toptal.com/developers/gitignore/api/sass,web
+# Edit at https://www.toptal.com/developers/gitignore?templates=sass,web
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map

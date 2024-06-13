@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='img/panda.png') }}" rel="icon" type="image/png">
+  <title>판다톡 - 채팅</title>
+</head>
+<body>
+  <div class="chat">
+    <main class="chat-screen">
+      <section class="chat-screen__bar">
+        <div class="preview">
+          <div class="preview__column">
+            <div class="preview__pic"></div>
+          </div>
+          <div class="preview__column">
+            <p class="preview__nick">친구</p>
+            <p class="preview__message">
+              <i class="fas fa-user"></i> 5
+            </p>
+          </div>
+        </div>
+      </section>
+      <ul class="chat-screen__bubbles" id="chat-screen__bubbles">
+        <!-- Messages will be inserted here by JavaScript -->
+      </ul>
+    </main>
+    <form class="chat-form" id="chat-form">
+      <div class="chat-form__plugin">
+        <i class="far fa-smile chat-form__icon"></i>
+        <i class="fas fa-paperclip chat-form__icon"></i>
+        <i class="far fa-calendar-check chat-form__icon"></i>
+      </div>
+      <div class="chat-form__field">
+        <textarea class="chat-form__msg" id="chat-form__msg"></textarea>
+        <input class="chat-form__bt" type="submit" value="전송">
+      </div>
+    </form>
+  </div>
+  <script src="https://kit.fontawesome.com/c8e2b99a17.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('chat-form');
+      const msgInput = document.getElementById('chat-form__msg');
+      const chatBubbles = document.getElementById('chat-screen__bubbles');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const msg = msgInput.value.trim();
+        if (msg) {
+          fetch('/send_message', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'message=' + encodeURIComponent(msg)
+          }).then(response => response.json()).then(data => {
+            if (data.success) {
+              addMessageToChat(msg);
+              msgInput.value = '';
+            }
+          });
+        }
+      });
+
+      function addMessageToChat(msg) {
+        const newBubble = document.createElement('li');
+        newBubble.classList.add('bubble');
+        newBubble.textContent = msg;
+        chatBubbles.appendChild(newBubble);
+        chatBubbles.scrollTop = chatBubbles.scrollHeight;
+      }
+
+      function loadMessages() {
+        fetch('/get_messages')
+          .then(response => response.json())
+          .then(data => {
+            chatBubbles.innerHTML = '';
+            data.messages.forEach(addMessageToChat);
+          });
+      }
+
+      loadMessages();
+      setInterval(loadMessages, 5000); // Refresh messages every 5 seconds
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='img/panda.png') }}" rel="icon" type="image/png">
+  <title>판다톡 - 채팅 목록</title>
+</head>
+<body>
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__btn">
+        <i class="fas fa-user fa-2x"></i>
+      </li>
+      <li class="nav__btn active">
+        <i class="fas fa-comment fa-2x"></i>
+      </li>
+    </ul>
+  </nav>
+  <div class="chats">
+    <header class="header">
+      <h3 class="header__title">채팅</h3>
+      <div class="header__menu">
+        <span><i class="fas fa-search"></i></span>
+        <span><i class="fas fa-comment-dots"></i></span>
+      </div>
+    </header>
+    <main class="previews">
+      <div class="preview-list">
+        <a href="./chat.html">
+          <div class="preview">
+            <div class="preview__column">
+              <div class="preview__pic"></div>
+            </div>
+            <div class="preview__column">
+              <p class="preview__nick">채팅방 이름</p>
+              <p class="preview__message">채팅 내용 미리보기</p>
+              <p class="preview__time">오후 12:00</p>
+            </div>
+          </div>
+        </a>
+        <a href="./chat.html">
+          <div class="preview">
+            <div class="preview__column">
+              <div class="preview__pic"></div>
+            </div>
+            <div class="preview__column">
+              <p class="preview__nick">채팅방 이름</p>
+              <p class="preview__message">채팅 내용 미리보기</p>
+              <p class="preview__time">오후 12:00</p>
+            </div>
+          </div>
+        </a>
+        <a href="./chat.html">
+          <div class="preview">
+            <div class="preview__column">
+              <div class="preview__pic"></div>
+            </div>
+            <div class="preview__column">
+              <p class="preview__nick">채팅방 이름</p>
+              <p class="preview__message">채팅 내용 미리보기</p>
+              <p class="preview__time">오후 1:00</p>
+            </div>
+          </div>
+        </a>
+        <a href="./chat.html">
+          <div class="preview">
+            <div class="preview__column">
+              <div class="preview__pic"></div>
+            </div>
+            <div class="preview__column">
+              <p class="preview__nick">채팅방 이름</p>
+              <p class="preview__message">채팅 내용 미리보기</p>
+              <p class="preview__time">오후 6:00</p>
+            </div>
+          </div>
+        </a>
+        <a href="./chat.html">
+          <div class="preview">
+            <div class="preview__column">
+              <div class="preview__pic"></div>
+            </div>
+            <div class="preview__column">
+              <p class="preview__nick">채팅방 이름</p>
+              <p class="preview__message">채팅 내용 미리보기</p>
+              <p class="preview__time">오후 6:00</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://kit.fontawesome.com/c8e2b99a17.js" crossorigin="anonymous"></script>
+</body>
+</html>
